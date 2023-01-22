@@ -2,9 +2,10 @@
 const fs = require('fs');
 const path = require('path');
 require('./deploy-commands');
+require('./config/reddis.js')
 
 // Import the discord.js module
-const { Client, Events, GatewayIntentBits, Collection} = require('discord.js');
+const { Client, GatewayIntentBits, Collection} = require('discord.js');
 const { Token } = require('./config.json');
 
 // Create a new client instance
@@ -39,4 +40,4 @@ for (const file of commandFiles) {
 }
 
 // Log in to Discord with your client's token
-client.login(Token);
+client.login(Token)
