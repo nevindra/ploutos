@@ -8,6 +8,9 @@ require('./config/reddis.js')
 const { Client, GatewayIntentBits, Collection} = require('discord.js');
 const { Token } = require('./config.json');
 
+// Import Cron Job
+const job = require('./apis/crypto/cron.js');
+
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const eventsPath = path.join(__dirname, 'events');
@@ -38,6 +41,9 @@ for (const file of commandFiles) {
         console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
     }
 }
+
+// Start the cron job
+job.start();
 
 // Log in to Discord with your client's token
 client.login(Token)
