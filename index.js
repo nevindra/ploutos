@@ -42,7 +42,7 @@ for (const file of commandFiles) {
     }
 }
 
-// Start the cron job
+// Start the cron job only if boolean from watch command is true
 job.start();
 
 // Log in to Discord with your client's token

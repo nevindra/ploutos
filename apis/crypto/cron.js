@@ -1,12 +1,10 @@
 const cron = require('cron');
-const { getCoinData } = require('./marketcoincap');
+const { getMarketData } = require('./crypto');
 
 // Create a cron job every second
-const job = new cron.CronJob('* */1 * * *', async () => {
+const job = new cron.CronJob('* * * * *', async () => {
     // Get the data from the API
-    const data = await getCoinData();
-    // Log the data to the console
-    console.log(data);
+    return await getMarketData()
 })
 // Start the cron job
 module.exports = job;
